@@ -16,3 +16,27 @@ def calculateStats(numbers):
     computedStats['max'] = max(numbers)
 
   return computedStats
+
+
+class EmailAlert:
+  def __init__(self):
+    self.emailSent = False
+
+
+class LEDAlert:
+  def __init__(self):
+    self.ledGlows = False
+
+
+class StatsAlerter:
+  def __init__(self, maxThreshold, email_led_alert):
+    self.maxThreshold = maxThreshold
+    self.email_alert: EmailAlert = email_led_alert[0]
+    self.led_alert: LEDAlert = email_led_alert[1]
+
+  def checkAndAlert(self, numbers):
+    computedStats = calculateStats(numbers)
+
+    if computedStats['max'] > self.maxThreshold:
+      self.email_alert.emailSent = True
+      self.led_alert.ledGlows = True

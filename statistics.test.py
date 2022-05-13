@@ -1,5 +1,9 @@
 import unittest
 import statistics
+
+from statistics import EmailAlert
+from statistics import LEDAlert
+from statistics import StatsAlerter
 import math
 
 
